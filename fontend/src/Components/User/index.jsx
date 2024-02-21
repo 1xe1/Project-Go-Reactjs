@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
+import "animate.css";
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -143,7 +144,16 @@ const User = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">User List</h2>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap"
+        rel="stylesheet"
+      />
+
+      <h1 className=" text-3xl font-semibold mb-4 animate__animated animate__zoomInDown text-center">
+        User List
+      </h1>
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-4/5 mx-auto">
         <div className=" flex justify-evenly">
           <div></div>

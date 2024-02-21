@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+/* ต่อมาคุณสามารถใช้ฟอนต์ Sriracha ใน CSS ได้เหมือนเป็นฟอนต์ปกติ */
+:root {
+  font-family: 'Sriracha', cursive;
+}
