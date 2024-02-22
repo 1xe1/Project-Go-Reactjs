@@ -7,7 +7,7 @@ import User from "./Components/User";
 function App() {
   return (
     <>
-    
+
       <Navbar /> {/* Render the Navbar component */}
       <Routes>
       <Route path="/login" element={<Login />} />

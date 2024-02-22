@@ -8,3 +8,12 @@
 :root {
   font-family: 'Sriracha', cursive;
 }
+.custom-text-shadow {
+  text-shadow: 6px 10px 6px rgba(73, 69, 74, 0.85);
+}
+
+.custom-box-shadow{
+  box-shadow: 6px 10 5px 6px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 6px 10 6px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 10 6px 0px rgba(0,0,0,0.75);
+}
