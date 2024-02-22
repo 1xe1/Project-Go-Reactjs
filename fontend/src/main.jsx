@@ -23,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap"
       rel="stylesheet"
     />
+
     <BrowserRouter>
       <App />
     </BrowserRouter>

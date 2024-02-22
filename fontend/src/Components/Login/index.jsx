@@ -1,37 +1,48 @@
 import React, { useState } from 'react';
+import axios from 'axios'; 
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import './index.css';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
-  const handleLogin = async () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault(); 
     try {
-      const response = await axios.post('http://localhost:5000/users/login', {
-        Email: email,
-        Password: password,
+      const response = await axios.post("http://localhost:5000/users/login", {
+        email: email,
+        password: password,
       });
+
       if (response.data.message === "success") {
-        navigate('/'); // Redirect to the home page
+        const userName = response.data.Name;
+        setName(userName);
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("email", email);
+        localStorage.setItem("Name", userName);
         console.log("Login successful");
-        // Redirect or update state here
+        toast.success("Login successful");
+        onLogin(); // Redirect and refresh the page
+        console.log(name);
       } else {
-        // Handle other responses
         console.log(response.data.message);
-        // Show error message to the user
+        toast.error("Login failed"); 
       }
     } catch (error) {
       if (error.response && error.response.data) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error('Login error:', error.response.data.message);
-        // Display error message to the user
+        console.error("Login error:", error.response.data.message);
+        toast.error("Login error: " + error.response.data.message);
       } else if (error.request) {
-        // The request was made but no response was received
-        console.error('No response received:', error.request);
+        console.error("No response received:", error.request);
+        toast.error("No response received");
       } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error('Error:', error.message);
+        console.error("Error:", error.message);
+        toast.error("Error: " + error.message);
       }
     }
   };
@@ -72,7 +83,7 @@ const Login = () => {
                             />
                             <i className="input-icon uil uil-lock-alt"></i>
                           </div>
-                          <button className="btn mt-4" onClick={handleLogin}>Login</button>
+                          <button className="btn mt-4" onClick={handleSubmit}>Login</button>
                           <p className="mb-0 mt-4 text-center"><a href="" className="link">Forgot your password?</a></p>
                         </div>
                       </div>
