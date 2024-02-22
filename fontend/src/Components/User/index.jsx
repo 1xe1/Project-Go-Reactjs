@@ -78,10 +78,10 @@ const User = () => {
         setEditingUser(null);
         setEditedName("");
         setEditedEmail("");
-        toast.success("การแก้ไขข้อมูลเสร็จสมบูรณ์");
+        toast.success("Updated user successfully");
       } catch (error) {
         console.error("Error updating user:", error.message);
-        toast.error("ไม่สามารถแก้ไขข้อมูลผู้ใช้ได้");
+        toast.error("Can't update user");
       }
     }
   };
@@ -100,7 +100,7 @@ const User = () => {
         const updatedUsers = users.filter((user) => user.ID !== deletedUserId);
         setUsers(updatedUsers);
         setConfirmingRow(null);
-        toast.success("ลบข้อมูลผู้ใช้เรียบร้อยแล้ว");
+        toast.success("Delete user successfully");
       } catch (error) {
         console.error(error);
       }
@@ -138,7 +138,7 @@ const handleSubmit = async (e) => {
     const userData = await response.json();
     setUsers([...users, userData]);
     setNewUserData({ name: "", email: "", password: "" });
-    toast.success("เพิ่มข้อมูลผู้ใช้เรียบร้อยแล้ว");
+    toast.success("Add User Success");
     closeModal();
   } catch (error) {
     console.error(error);
@@ -149,7 +149,7 @@ const handleSubmit = async (e) => {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-semibold mb-4 animate__animated animate__zoomInUp text-center custom-text-shadow pt-5">
-        สมาชิก 
+        User 
       </h1>
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-4/5 mx-auto ">
         <div className=" flex justify-evenly ">
@@ -162,7 +162,7 @@ const handleSubmit = async (e) => {
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 "
             onClick={openModal}
           >
-            เพิ่ม
+            Add
           </button>
         </div>
         <table className="min-w-full divide-y divide-gray-300 custom-text-shadow">
@@ -172,13 +172,13 @@ const handleSubmit = async (e) => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                ชื่อ
+                Name
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                อีเมล
+                Email
               </th>
               <th
                 scope="col"
@@ -222,13 +222,13 @@ const handleSubmit = async (e) => {
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
                         onClick={() => handleDelete(row)}
                       >
-                        ยืนยัน
+                        Confirm
                       </button>
                       <button
                         className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                         onClick={() => setConfirmingRow(null)}
                       >
-                        ยกเลิก
+                        Cancel
                       </button>
                     </>
                   ) : (
@@ -239,13 +239,13 @@ const handleSubmit = async (e) => {
                             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
                             onClick={handleSaveEdit}
                           >
-                            บันทึก
+                            Save
                           </button>
                           <button
                             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2"
                             onClick={handleCancelEdit}
                           >
-                            ยกเลิก
+                            Cancel
                           </button>
                         </>
                       ) : (
@@ -255,14 +255,14 @@ const handleSubmit = async (e) => {
                               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                               onClick={() => handleEdit(row)}
                             >
-                              แก้ไข
+                              Edit
                             </button>
                           )}
                           <button
                             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => setConfirmingRow(row)}
                           >
-                            ลบ
+                            Del
                           </button>
                         </>
                       )}

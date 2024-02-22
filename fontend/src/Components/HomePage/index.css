@@ -84,3 +84,12 @@ p {
 .abs-site-link {
   @apply fixed bottom-20 left-20 text-opacity-60 text-base;
 }
+
+
+
+.text-gradient1 {
+    background: linear-gradient(to right, #4040bf, #0040bf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  

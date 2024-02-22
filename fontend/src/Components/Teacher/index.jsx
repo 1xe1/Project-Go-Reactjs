@@ -99,9 +99,9 @@ const Teacher = () => {
           setEditedLastName("");
           setEditedAge(0);
           setEditedSalary(0);
-          toast.success("การแก้ไขข้อมูลเสร็จสมบูรณ์");
+          toast.success("Update Teacher Success");
         } else {
-          toast.error("กรุณากรอกข้อมูลอายุและเงินเดือนเป็นจำนวนเต็มบวก");
+          toast.error("Should Be Number");
         }
       } catch (error) {
         console.error(error);
@@ -127,7 +127,7 @@ const Teacher = () => {
         );
         setTeachers(updatedTeachers);
         setConfirmingRow(null);
-        toast.success("ลบข้อมูลครูเรียบร้อยแล้ว");
+        toast.success("Delete teacher successfully");
       } catch (error) {
         console.error(error);
       }
@@ -174,10 +174,10 @@ const Teacher = () => {
         const teacherData = await response.json();
         setTeachers([...teachers, teacherData]);
         setNewTeacherData({ firstName: "", lastName: "", age: 0, salary: 0 });
-        toast.success("เพิ่มข้อมูลครูเรียบร้อยแล้ว");
+        toast.success("Add Teacher Success");
         closeModal();
       } else {
-        toast.error("กรุณากรอกข้อมูลอายุและเงินเดือนเป็นจำนวนเต็มบวก");
+        toast.error("Should Be Number");
       }
     } catch (error) {
       console.error(error);
@@ -187,7 +187,7 @@ const Teacher = () => {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-semibold mb-4 animate__animated animate__zoomInUp text-center custom-text-shadow pt-5">
-        ครู
+        TeaCher
       </h1>
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-4/5 mx-auto ">
         <div className=" flex justify-evenly ">
@@ -200,7 +200,7 @@ const Teacher = () => {
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 "
             onClick={openModal}
           >
-            เพิ่ม
+            Add
           </button>
         </div>
         <table className="min-w-full divide-y divide-gray-300 custom-text-shadow">
@@ -210,31 +210,31 @@ const Teacher = () => {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                ชื่อ
+                First Name
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                นามสกุล
+                Last Name
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                อายุ
+                Age
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                เงินเดือน
+                Salary
               </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                การกระทำ
+                Actions
               </th>
             </tr>
           </thead>
@@ -307,13 +307,13 @@ const Teacher = () => {
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
                         onClick={() => handleDelete(row)}
                       >
-                        ยืนยัน
+                        Confirm
                       </button>
                       <button
                         className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                         onClick={() => setConfirmingRow(null)}
                       >
-                        ยกเลิก
+                        Cancel
                       </button>
                     </>
                   ) : (
@@ -324,13 +324,13 @@ const Teacher = () => {
                             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
                             onClick={handleSaveEdit}
                           >
-                            บันทึก
+                            Save
                           </button>
                           <button
                             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2"
                             onClick={handleCancelEdit}
                           >
-                            ยกเลิก
+                            Cancel
                           </button>
                         </>
                       ) : (
@@ -339,13 +339,13 @@ const Teacher = () => {
                             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                             onClick={() => handleEdit(row)}
                           >
-                            แก้ไข
+                            Edit
                           </button>
                           <button
                             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                             onClick={() => setConfirmingRow(row)}
                           >
-                            ลบ
+                            Del
                           </button>
                         </>
                       )}
@@ -364,20 +364,20 @@ const Teacher = () => {
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg"
         overlayClassName="fixed top-0 left-0 right-0 bottom-0 bg-gray-800 bg-opacity-50"
       >
-        <h2 className="text-2xl font-semibold mb-4">เพิ่มข้อมูล</h2>
+        <h2 className="text-2xl font-semibold mb-4">Add</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col space-y-2">
             <label
               htmlFor="firstName"
               className="text-sm font-medium text-gray-700"
             >
-              ชื่อ
+              first Name
             </label>
             <input
               type="text"
               id="firstName"
               name="firstName"
-              placeholder="กรอกชื่อ"
+              placeholder="Your FirstName"
               value={newTeacherData.firstName}
               onChange={handleChange}
               className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -388,13 +388,13 @@ const Teacher = () => {
               htmlFor="lastName"
               className="text-sm font-medium text-gray-700"
             >
-              นามสกุล
+              Last Name
             </label>
             <input
               type="text"
               id="lastName"
               name="lastName"
-              placeholder="กรอกนามสกุล"
+              placeholder="Your LastName"
               value={newTeacherData.lastName}
               onChange={handleChange}
               className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -402,13 +402,13 @@ const Teacher = () => {
           </div>
           <div className="flex flex-col space-y-2">
             <label htmlFor="age" className="text-sm font-medium text-gray-700">
-              อายุ
+              Age
             </label>
             <input
               type="number"
               id="age"
               name="age"
-              placeholder="กรอกอายุ"
+              placeholder="Age"
               value={newTeacherData.age}
               onChange={(e) => {
                 const value = parseInt(e.target.value);
@@ -424,13 +424,13 @@ const Teacher = () => {
               htmlFor="salary"
               className="text-sm font-medium text-gray-700"
             >
-              เงินเดือน
+              Salary
             </label>
             <input
               type="number"
               id="salary"
               name="salary"
-              placeholder="กรอกเงินเดือน"
+              placeholder="Salary"
               value={newTeacherData.salary}
               onChange={(e) => {
                 const value = parseInt(e.target.value);
@@ -446,7 +446,7 @@ const Teacher = () => {
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            เพิ่ม
+            Add
           </button>
         </form>
       </Modal>

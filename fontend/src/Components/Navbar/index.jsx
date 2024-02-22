@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
+import "./Heartbeat.css";
 
 const Navbar = () => {
   // State to track login status
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") === "true");
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
   const userEmail = localStorage.getItem("email");
 
   // Function to handle logout
@@ -28,20 +31,30 @@ const Navbar = () => {
       <div>
         <nav className="bg-gradient-to-r from-purple-600 to-blue-400 border-gray-200 dark:bg-gray-900">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-            <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <Link
+              to="/"
+              className="flex items-center space-x-3 rtl:space-x-reverse"
+            >
               <img src={logo} className="h-20" alt="My logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white glow-dark">
                 School
               </span>
             </Link>
             <div className="flex items-center space-x-6 rtl:space-x-reverse">
-              <a
-                href="/"
-                className="text-sm text-white dark:text-gray-200 hover:underline"
-              >
-                {userEmail}
-              </a>
+            <div className="flex items-center">
+                <div class="heart">
+                  <div class="heartbeat">❤️</div>
+                  <div class="heartecho">❤️</div>
+                </div>
+                <a
+                  href="/"
+                  className=" text-base text-whitedark:text-gray-200 hover:underline"
+                >
+                  {userEmail}
+                </a>
+              </div>
               {isLoggedIn ? (
+                
                 <a
                   href="#"
                   className=" text-xl text-red-600 dark:text-red-500 hover:underline"
