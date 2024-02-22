@@ -29,7 +29,7 @@ const Navbar = () => {
               href="#"
               className="text-sm text-blue-600 dark:text-blue-500 hover:underline"
             >
-              Login
+              <Link to="/login">Login</Link>
             </a>
           </div>
         </div>
