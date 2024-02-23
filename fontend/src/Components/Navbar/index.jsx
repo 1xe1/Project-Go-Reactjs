@@ -42,9 +42,9 @@ const Navbar = () => {
             </Link>
             <div className="flex items-center space-x-6 rtl:space-x-reverse">
             <div className="flex items-center">
-                <div class="heart">
-                  <div class="heartbeat">❤️</div>
-                  <div class="heartecho">❤️</div>
+                <div className="heart">
+                  <div className="heartbeat">❤️</div>
+                  <div className="heartecho">❤️</div>
                 </div>
                 <a
                   href="/"

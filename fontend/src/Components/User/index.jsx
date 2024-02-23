@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-modal";
 import "animate.css";
 
-
 const User = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +12,11 @@ const User = () => {
   const [editedName, setEditedName] = useState("");
   const [editedEmail, setEditedEmail] = useState("");
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false); // New state to handle delete confirmation
-  const [newUserData, setNewUserData] = useState({ name: "", email: "", password: "" });
+  const [newUserData, setNewUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [confirmingRow, setConfirmingRow] = useState(null);
 
@@ -60,13 +63,16 @@ const User = () => {
         Email: editedEmail,
       };
       try {
-        const response = await fetch(`http://localhost:5000/users/${updatedUser.ID}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedUser),
-        });
+        const response = await fetch(
+          `http://localhost:5000/users/${updatedUser.ID}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedUser),
+          }
+        );
         if (!response.ok) {
           throw new Error("Failed to update user");
         }
@@ -85,7 +91,6 @@ const User = () => {
       }
     }
   };
-  
 
   const handleDelete = async (row) => {
     if (confirmingRow === row) {
@@ -122,34 +127,33 @@ const User = () => {
     setNewUserData({ ...newUserData, [name]: value });
   };
   // Inside handleSubmit function in User component
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserData),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add user");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUserData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add user");
+      }
+      const userData = await response.json();
+      setUsers([...users, userData]);
+      setNewUserData({ name: "", email: "", password: "" });
+      toast.success("Add User Success");
+      closeModal();
+    } catch (error) {
+      console.error(error);
     }
-    const userData = await response.json();
-    setUsers([...users, userData]);
-    setNewUserData({ name: "", email: "", password: "" });
-    toast.success("Add User Success");
-    closeModal();
-  } catch (error) {
-    console.error(error);
-  }
-};
-
+  };
 
   return (
     <div className="p-4">
       <h1 className="text-3xl font-semibold mb-4 animate__animated animate__zoomInUp text-center custom-text-shadow pt-5">
-        User 
+        User
       </h1>
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-4/5 mx-auto ">
         <div className=" flex justify-evenly ">
@@ -315,19 +319,22 @@ const handleSubmit = async (e) => {
             />
           </div>
           <div className="flex flex-col space-y-2">
-  <label htmlFor="password" className="text-sm font-medium text-gray-700">
-    Password
-  </label>
-  <input
-    type="password"
-    id="password"
-    name="password"
-    placeholder="Enter password"
-    value={newUserData.password}
-    onChange={handleChange}
-    className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-</div>
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              value={newUserData.password}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

@@ -1,31 +1,65 @@
 import React from "react";
 import "./index.css";
-import "./Cude.css";
+// import "./Cude.css";
 
 const HomePage = () => {
   return (
     <div>
       {/* <section className="section1">
-        <div className="section2 w-full">
-          <div className="container">
+        <div className="section2">
+        <div className="container">
             <div className="cube">
-              <div className="diveE" style={{ '--x': -1, '--y': 0 }}>
-                <span style={{ '--i': 3 }}></span>
-                <span style={{ '--i': 2 }}></span>
-                <span style={{ '--i': 1 }}></span>
-              </div>
-              <div className="diveE" style={{ '--x': 0, '--y': 0 }}>
-                <span style={{ '--i': 3 }}></span>
-                <span style={{ '--i': 2 }}></span>
-                <span style={{ '--i': 1 }}></span>
-              </div>
-              <div className="diveE" style={{ '--x': 1, '--y': 0 }}>
-                <span style={{ '--i': 3 }}></span>
-                <span style={{ '--i': 2 }}></span>
-                <span style={{ '--i': 1 }}></span>
-              </div>
+                <div className="diveE" style="--x:-1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:0; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
             </div>
-          </div>
+            <div className="cube">
+                <div className="diveE" style="--x:-1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:0; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+            </div>
+            <div className="cube">
+                <div className="diveE" style="--x:-1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:0; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+                <div className="diveE" style="--x:1; --y:0;">
+                    <span style="--i:3;"></span>
+                    <span style="--i:2;"></span>
+                    <span style="--i:1;"></span>
+                </div>
+            </div>
+        </div>
         </div>
       </section> */}
 
